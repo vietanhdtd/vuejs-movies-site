@@ -6,8 +6,11 @@ A VueJS project with Vuex and Voue Router.
 - [x] Get list movie show it in home page
 - [X] Add Vuex modules global store and init state, getters, actions and mutations for list movies.
 - [x] Create 2 route.
-- [ ] Create Details page.
+- [x] Create Details page.
+- [x] Search movies.
+- [x] Can view recent searched movies.
 - [ ] Create Setting page.
+- [ ] Detail page has movie's trailer that user can watch.
 
 ## Build with:
 - [VueJS v3.x](https://v3.vuejs.org/) (Preview) 
