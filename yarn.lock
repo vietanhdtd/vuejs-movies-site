@@ -8320,6 +8320,11 @@ watchpack@^1.7.4:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"
 
+wave-ui@^2.10.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/wave-ui/-/wave-ui-2.10.0.tgz#0e57abdd0c83b0cfe381339ebce82d55110b851c"
+  integrity sha512-encctGVUcR2/Ke9Zvq++JL8ZtGtzNKdc/9azLjI5TRR22/UbGHMZwpghihFEhar+7ClCwrzzI5fMCqcK+EtDNg==
+
 wbuf@^1.1.0, wbuf@^1.7.3:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/wbuf/-/wbuf-1.7.3.tgz#c1d8d149316d3ea852848895cb6a0bfe887b87df"

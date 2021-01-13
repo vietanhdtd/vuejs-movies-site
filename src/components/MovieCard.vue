@@ -1,9 +1,9 @@
 <template>
-  <div class="hello">
-    <div>
+  <div class="movie-card md2 sm3">
+    <w-image contain lazy :src="baseUrl + movie.poster_path" :ratio="1030 / 686" :fallback="errorImage" />
+    <p>
       {{ movie.title }}
-    </div>
-    <img :src="url + movie.backdrop_path" />
+    </p>
   </div>
 </template>
 
@@ -11,11 +11,16 @@
 export default {
   name: 'HelloWorld',
   props: {
-    movie: Object,
+    movie: {
+      type: Object,
+      default: () => {},
+    },
   },
-  setup() {
+  setup(props) {
+    console.log('props: ', props)
     return {
-      url: `https://image.tmdb.org/t/p/w500`,
+      baseUrl: `https://image.tmdb.org/t/p/w500`,
+      errorImage: require('@/assets/logo.png'),
     }
   },
 }
@@ -23,18 +28,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.movie-card {
+  border: 1px solid lightgray;
+  margin: 10px;
 }
 </style>
