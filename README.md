@@ -11,6 +11,7 @@ A VueJS project with Vuex and Voue Router.
 - [x] Can view recent searched movies.
 - [ ] Create Setting page.
 - [ ] Detail page has movie's trailer that user can watch.
+- [ ] Load more movies when reach end page. 
 
 ## Build with:
 - [VueJS v3.x](https://v3.vuejs.org/) (Preview) 
