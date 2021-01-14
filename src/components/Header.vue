@@ -1,6 +1,10 @@
 <template>
   <w-toolbar shadow fixed>
-    <div class="title2">{{ title }}</div>
+    <div class="title2">
+      <router-link to="/">
+        {{ title }}
+      </router-link>
+    </div>
     <div class="spacer"></div>
   </w-toolbar>
 </template>

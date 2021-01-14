@@ -1,7 +1,7 @@
 <template>
   <w-app>
     <Header />
-    <div class="px10">
+    <div class="px10 pt12">
       <router-view />
     </div>
   </w-app>

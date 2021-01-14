@@ -1,5 +1,5 @@
 <template>
-  <div class="home pt12">
+  <div class="home">
     <w-flex class="py6 mla" :class="[{ xs12: searchMode }, { xs4: !searchMode }]">
       <w-input
         v-model="searchString"
@@ -20,7 +20,7 @@
       </div>
       <p v-else class="title1">{{ discover }}</p>
       <w-flex wrap class="px2">
-        <movie-card v-for="movie in listMovies" :key="movie.id" v-model="movieID" :movie="movie" />
+        <movie-card v-for="movie in listMovies" :key="movie.id" v-model:movieID="movieID" :movie="movie" />
       </w-flex>
     </w-flex>
   </div>
@@ -32,7 +32,8 @@ import { computed, onMounted, ref, watch } from 'vue'
 import { useStore } from 'vuex'
 import { MovieCard } from '@/components'
 import debounce from 'lodash/debounce'
-import router from '@/router'
+import { useRouter } from 'vue-router'
+import isEmpty from 'lodash/isEmpty'
 
 export default {
   name: 'Home',
@@ -42,9 +43,11 @@ export default {
 
   setup() {
     const store = useStore()
+    const router = useRouter()
+
     const searchString = ref('')
     const searchMode = ref(false)
-    const movieID = ref('')
+    const movieID = ref(null)
     const searchDebounce = 1000
 
     const searchResult = computed(() => store.getters['search/searchResult'])
@@ -54,13 +57,18 @@ export default {
     )
 
     onMounted(() => {
-      store.dispatch('movies/getListDiscoverMovies')
+      if (isEmpty(listMovies.value)) store.dispatch('movies/getListDiscoverMovies')
     })
 
     const onBlurInput = () => {
       searchMode.value = false
       searchString.value = ''
     }
+
+    watch(movieID, id => {
+      store.commit('details/setMovieDetails', {})
+      router.push(`/details/${id}`)
+    })
 
     watch(
       searchString,
