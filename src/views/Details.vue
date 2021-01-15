@@ -3,7 +3,7 @@
   <w-flex v-if="movie.title" column class="pt12">
     <p class="title1">{{ movie.title }}</p>
     <w-flex v-if="selectedKey">
-      <YouTube :src="selectedKey" :width="480" :height="320" host="http://localhost:8080" />
+      <YouTube :src="selectedKey" :width="480" :height="320" :host="host" />
       <w-list
         v-model="selectedKey"
         no-unselect
@@ -40,7 +40,6 @@ export default {
         return { label: name, value: key }
       })
     })
-
     watch(movieVideos, newList => {
       if (!isEmpty(newList)) {
         selectedKey.value = newList[0].value
@@ -56,6 +55,7 @@ export default {
       movie,
       movieVideos,
       selectedKey,
+      host: window.location.origin,
     }
   },
 }
