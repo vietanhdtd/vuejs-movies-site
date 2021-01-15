@@ -1,7 +1,7 @@
 <template>
-  <w-app>
+  <w-app :style="{ height: '100vh' }">
     <Header />
-    <div class="px10 pt12">
+    <div class="px10 pt12" :style="{ height: '100%' }">
       <router-view />
     </div>
   </w-app>
@@ -26,7 +26,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
   max-width: 1200px;
   margin: auto;

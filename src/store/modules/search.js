@@ -4,6 +4,7 @@ import isEmpty from 'lodash/isEmpty'
 // initial state
 const state = () => ({
   result: [],
+  searchStrings: [],
   isSearching: false,
 })
 
@@ -13,14 +14,18 @@ const getters = {
     return state.result
   },
   isSearching: state => state.isSearching,
+  getListSearchStrings: state => state.searchStrings,
   isEmptySearchResult: state => isEmpty(state.result),
 }
 
 // actions
 const actions = {
   async searchMovies({ commit }, searchString) {
+    commit('setSearchStatus', true)
+    commit('setSearchResult', [])
     const result = await api.searchMovies(searchString)
-    commit('saveSearchResult', result)
+    commit('setSearchResult', result)
+    commit('saveSearchString', { label: searchString, value: searchString })
     commit('setSearchStatus', false)
   },
 }
@@ -30,8 +35,12 @@ const mutations = {
   setSearchStatus(state, payload) {
     state.isSearching = payload
   },
-  saveSearchResult(state, payload) {
+  setSearchResult(state, payload) {
     state.result = payload.results
+  },
+  saveSearchString(state, payload) {
+    if (state.searchStrings.length > 4) state.searchStrings.pop()
+    state.searchStrings.push(payload)
   },
 }
 

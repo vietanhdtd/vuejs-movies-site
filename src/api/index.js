@@ -10,9 +10,9 @@ const fetchData = async (path, query = {}) => {
   return await fetch(url.toString())
 }
 
-export async function getListDiscoverMovies() {
+export async function getListDiscoverMovies(page) {
   try {
-    const result = await fetchData('/discover/movie')
+    const result = await fetchData('/discover/movie', { page })
     return result.json()
   } catch (e) {
     console.log(e)

@@ -37,5 +37,16 @@ export default {
 .movie-card {
   border: 1px solid lightgray;
   margin: 10px;
+  width: 15rem;
+  min-height: 285px;
+  transition: box-shadow 0.4s;
+  transition: transform 0.4s;
+  cursor: pointer;
+  /* border: 1px solid rgba(77, 77, 77, 0.5) !important; */
+  /* background-color: black !important; */
+}
+.movie-card:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-0.35em);
 }
 </style>
